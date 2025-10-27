@@ -1,3 +1,37 @@
+# Node / frontend
+node_modules/
+dist/
+build/
+
+# Vite / local
+.vite/
+.env.local
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Python (in case backend files are inside repo)
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# DB
+*.sqlite3
+*.db
+azubi.db
+
+# Logs
+*.log
 # --- Logs
 logs
 *.log
