@@ -22,9 +22,16 @@ const password = ref('secret')
 const error = ref('')
 const router = useRouter()
 const auth = useAuth()
+const globalStore = useGlobalStore()
 
-async function submit(){
-  try{ await auth.login(email.value, password.value); router.push({ name: 'dashboard' }) }
-  catch(e){ error.value = e?.response?.data?.detail || 'Login fehlgeschlagen' }
+async function submit () {
+  try {
+    const user = await auth.login(email.value, password.value)
+    // Mock: feste ID 1; real: user.id vom Backend
+    globalStore.setUserId(user?.id ?? 1)
+    router.push({ name: 'dashboard' })
+  } catch (e) {
+    error.value = e?.response?.data?.detail || 'Login fehlgeschlagen'
+  }
 }
 </script>

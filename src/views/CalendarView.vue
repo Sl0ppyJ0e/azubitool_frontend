@@ -28,6 +28,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import http from '../api/http'
+const globalStore = useGlobalStore()
 
 const events = ref([])
 const newEvent = ref({ title: '', start: '', end: '', user_id: 1 })
@@ -45,7 +46,7 @@ const createEvent = async () => {
   try {
     // convert local datetime-local string to ISO if needed
     const payload = {
-      user_id: newEvent.value.user_id,
+      user_id: globalStore.userId,
       title: newEvent.value.title,
       start: new Date(newEvent.value.start).toISOString(),
       end: new Date(newEvent.value.end).toISOString(),
