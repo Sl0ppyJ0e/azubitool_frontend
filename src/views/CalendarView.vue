@@ -1,6 +1,20 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold mb-4">Kalender (Mock)</h1>
+    <h1 class="text-2xl font-bold mb-4">Kalender</h1>
+
+    <form @submit.prevent="createEvent" class="mb-4 space-y-2">
+      <div>
+        <input v-model="newEvent.title" placeholder="Titel" class="border p-2 w-full" />
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <input v-model="newEvent.start" type="datetime-local" class="border p-2" />
+        <input v-model="newEvent.end" type="datetime-local" class="border p-2" />
+      </div>
+      <div>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded">Erstellen</button>
+      </div>
+    </form>
+
     <ul class="bg-white rounded shadow divide-y">
       <li v-for="e in events" :key="e.id" class="p-3">
         <div class="font-medium">{{ e.title }}</div>
@@ -13,7 +27,38 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { mock } from '../api/mock'
+import http from '../api/http'
+
 const events = ref([])
-onMounted(()=>{ events.value = mock.events })
+const newEvent = ref({ title: '', start: '', end: '', user_id: 1 })
+
+const fetchEvents = async () => {
+  try {
+    const res = await http.get('/calendar', { params: { user_id: 1 } })
+    events.value = res.data
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+const createEvent = async () => {
+  try {
+    // convert local datetime-local string to ISO if needed
+    const payload = {
+      user_id: newEvent.value.user_id,
+      title: newEvent.value.title,
+      start: new Date(newEvent.value.start).toISOString(),
+      end: new Date(newEvent.value.end).toISOString(),
+    }
+    const res = await http.post('/calendar', payload)
+    events.value.push(res.data)
+    newEvent.value.title = ''
+    newEvent.value.start = ''
+    newEvent.value.end = ''
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+onMounted(()=>{ fetchEvents() })
 </script>
