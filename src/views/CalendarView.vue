@@ -11,7 +11,9 @@
         <input v-model="newEvent.end" type="datetime-local" class="border p-2" />
       </div>
       <div>
-        <button class="bg-blue-600 text-white px-4 py-2 rounded">Erstellen</button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded">
+        Erstellen
+        </button>
       </div>
     </form>
 
@@ -31,7 +33,7 @@ import http from '../api/http'
 
 const events = ref([])
 const newEvent = ref({ title: '', start: '', end: '', user_id: 1 })
-
+// clean init and test scrum/JIRA ticket
 const fetchEvents = async () => {
   try {
     const res = await http.get('/calendar', { params: { user_id: 1 } })
@@ -42,15 +44,26 @@ const fetchEvents = async () => {
 }
 
 const createEvent = async () => {
+  console.group('createEvent start')
+  console.log('New Event:', newEvent.value)
   try {
+
+    if (!newEvent.value.title || !newEvent.value.start || !newEvent.value.end) {
+      alert('Bitte alle Felder ausfüllen.')
+      return
+    }
+
     // convert local datetime-local string to ISO if needed
     const payload = {
-      user_id: newEvent.value.user_id,
+      //user_id: newEvent.value.user_id --> nicht nötig sollte bei login automatisch gesetzt werden --> env variable
       title: newEvent.value.title,
       start: new Date(newEvent.value.start).toISOString(),
       end: new Date(newEvent.value.end).toISOString(),
+      created: new Date().toISOString()
     }
+    console.log('Payload:', payload)
     const res = await http.post('/calendar', payload)
+    console.log('Response:', res.data)
     events.value.push(res.data)
     newEvent.value.title = ''
     newEvent.value.start = ''
