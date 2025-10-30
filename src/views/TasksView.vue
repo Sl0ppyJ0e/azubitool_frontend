@@ -8,7 +8,7 @@
 </template>
 <script setup>
 import { computed } from 'vue'
-import { useAuth } from '../store/auth'
+import { useAuth } from '../stores/auth'
 import { mock } from '../api/mock'
 import TaskCard from '../components/TaskCard.vue'
 const auth = useAuth()

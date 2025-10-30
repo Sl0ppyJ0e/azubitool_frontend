@@ -185,7 +185,7 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
-import { useAuth } from '../store/auth'
+import { useAuth } from '../stores/auth'
 
 const auth = useAuth()
 const userId = auth.user?.id ?? 0

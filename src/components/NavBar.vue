@@ -45,7 +45,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { AcademicCapIcon, BellIcon } from '@heroicons/vue/24/outline'
-import { useAuth } from '../store/auth'
+import { useAuth } from '../stores/auth'
 
 const showNotif = ref(false)
 const showUser  = ref(false)

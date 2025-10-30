@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useAuth } from '../store/auth'
+import { useAuth } from '../stores/auth'
 
 const routes = [
   { path: '/login', name: 'login', component: () => import('../views/LoginView.vue') },

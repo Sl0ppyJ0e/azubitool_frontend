@@ -31,10 +31,12 @@ import {
 
 const route = useRoute()
 const links = [
-  { to: '/',          text: 'Dashboard', icon: ChartBarIcon },
-  { to: '/tasks',     text: 'Aufgaben',  icon: ClipboardDocumentListIcon },
-  { to: '/calendar',  text: 'Kalender',  icon: CalendarDaysIcon },
-  { to: '/documents', text: 'Dokumente', icon: FolderIcon },
-  { to: '/feedback',  text: 'Feedback',  icon: ChatBubbleLeftRightIcon },
+  { to: '/',              text: 'Dashboard',        icon: ChartBarIcon },
+  { to: '/tasks',         text: 'Aufgaben',         icon: ClipboardDocumentListIcon },
+  { to: '/calendar',      text: 'Kalender',         icon: CalendarDaysIcon },
+  { to: '/documents',     text: 'Dokumente',        icon: FolderIcon },
+  { to: '/feedback',      text: 'Feedback',         icon: ChatBubbleLeftRightIcon },
+  { to: '/trainees',      text: 'Azubis',           icon: ClipboardDocumentListIcon },
+  { to: '/trainees/:id',  text: 'Azubi - Details',  icon: ChatBubbleLeftRightIcon },
 ]
 </script>
