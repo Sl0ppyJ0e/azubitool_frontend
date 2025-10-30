@@ -116,7 +116,10 @@ const config = computed(() => ({
   onOpen:  (_sel, _str, fp) => applyGuards(fp),
   onReady: (_sel, _str, fp) => applyGuards(fp),
   onChange:(_sel, _str, fp) => applyGuards(fp),
+  onabort: (_sel, _str, fp) => applyGuards(fp),
+  onClose: (_sel, _str, fp) => applyGuards(fp),
 }))
+
 
 // Reagiere auf Änderungen von constrainFrom/minOffsetMinutes
 watch([anchorPlusOffset, minDateForCalendar], () => {
