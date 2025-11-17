@@ -30,6 +30,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import http from '../api/http'
+import { useGlobalStore } from '../store/globalStore'
 const globalStore = useGlobalStore()
 
 const events = ref([])
@@ -37,7 +38,8 @@ const newEvent = ref({ title: '', start: '', end: '', user_id: 1 })
 // clean init and test scrum/JIRA ticket
 const fetchEvents = async () => {
   try {
-    const res = await http.get('/calendar', { params: { user_id: 1 } })
+    const userId = globalStore.userId ?? 1
+    const res = await http.get('/calendar', { params: { user_id: userId } })
     events.value = res.data
   } catch (err) {
     console.error(err)
@@ -55,10 +57,9 @@ const createEvent = async () => {
     }
 
     // convert local datetime-local string to ISO if needed
+    const userId = globalStore.userId ?? 1
     const payload = {
-
-      user_id: globalStore.userId,
-
+      user_id: userId,
       title: newEvent.value.title,
       start: new Date(newEvent.value.start).toISOString(),
       end: new Date(newEvent.value.end).toISOString(),
