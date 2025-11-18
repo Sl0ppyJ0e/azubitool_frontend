@@ -85,7 +85,7 @@ const createTask = async (payload) => {
       }
       const res = await http.post('/calendar', eventPayload)
       t.calendarEventId = res.data.id
-    } catch (err) { console.error('calendar create failed', err) }
+  } catch (err) { console.error('calendar create failed', err); alert('Fehler: Kalendereintrag konnte nicht erstellt werden (siehe Konsole).') }
   }
   tasks.value.unshift(t)
   saveTasks()
