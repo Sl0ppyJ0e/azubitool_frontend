@@ -10,68 +10,180 @@
     <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <!-- Offene Aufgaben -->
       <div class="bg-white rounded-xl border p-4">
-        <div class="flex items-center justify-between mb-3">
-          <h2 class="font-semibold">Offene Aufgaben</h2>
-          <button class="text-gray-400 hover:text-gray-600">⋮</button>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg text-neutral-900">Offene Aufgaben</h2>
+          <i class="text-neutral-400" data-fa-i2svg=""><svg class="svg-inline--fa fa-list-check" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="list-check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg></i>
         </div>
-        <ul class="space-y-3">
-          <TaskItem title="Projektdokumentation" due="15.01.2025" prio="Hoch" />
-          <TaskItem title="Wochenbericht"       due="12.01.2025" prio="Mittel" />
-          <TaskItem title="Schulungsnachweis"   due="20.01.2025" prio="Niedrig" />
-        </ul>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between p-3 bg-neutral-50 rounded-lg">
+            <div>
+              <p class="text-neutral-900 text-sm">Projektdokumentation</p>
+              <p class="text-xs text-neutral-500">Fällig: 15.01.2025</p>
+            </div>
+            <span class="px-2 py-1 bg-neutral-100 text-neutral-800 text-xs rounded-full">Hoch</span>
+          </div>
+          <div class="flex items-center justify-between p-3 bg-neutral-50 rounded-lg">
+            <div>
+              <p class="text-neutral-900 text-sm">Wochenbericht</p>
+              <p class="text-xs text-neutral-500">Fällig: 12.01.2025</p>
+            </div>
+            <span class="px-2 py-1 bg-neutral-100 text-neutral-800 text-xs rounded-full">Mittel</span>
+          </div>
+          <div class="flex items-center justify-between p-3 bg-neutral-50 rounded-lg">
+            <div>
+              <p class="text-neutral-900 text-sm">Schulungsnachweis</p>
+              <p class="text-xs text-neutral-500">Fällig: 20.01.2025</p>
+            </div>
+            <span class="px-2 py-1 bg-neutral-100 text-neutral-800 text-xs rounded-full">Niedrig</span>
+          </div>
+        </div>
+      </div>
+      <!-- Nächste Termine (kombinierte Version) -->
+      <div class="bg-white rounded-xl border p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg text-neutral-900">Nächste Termine</h2>
+          <CalendarDaysIcon class="w-5 h-5 text-neutral-400" />
+        </div>
+
+        <div class="space-y-3">
+          <!-- Termin 1 -->
+          <div class="flex items-start space-x-3 p-3 bg-neutral-50 rounded-lg">
+            <div class="bg-neutral-800 text-white text-xs rounded px-2 py-1 min-w-[40px] text-center">
+              10<br>JAN
+            </div>
+            <div>
+              <p class="text-neutral-900 text-sm">Teammeeting</p>
+              <p class="text-xs text-neutral-500">09:00 - 10:30</p>
+            </div>
+          </div>
+
+          <!-- Termin 2 -->
+          <div class="flex items-start space-x-3 p-3 bg-neutral-50 rounded-lg">
+            <div class="bg-neutral-800 text-white text-xs rounded px-2 py-1 min-w-[40px] text-center">
+              12<br>JAN
+            </div>
+            <div>
+              <p class="text-neutral-900 text-sm">Ausbildergespräch</p>
+              <p class="text-xs text-neutral-500">14:00 - 15:00</p>
+            </div>
+          </div>
+
+          <!-- Termin 3 -->
+          <div class="flex items-start space-x-3 p-3 bg-neutral-50 rounded-lg">
+            <div class="bg-neutral-800 text-white text-xs rounded px-2 py-1 min-w-[40px] text-center">
+              15<br>JAN
+            </div>
+            <div>
+              <p class="text-neutral-900 text-sm">Berufsschule</p>
+              <p class="text-xs text-neutral-500">08:00 - 15:30</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Nächste Termine -->
-      <div class="bg-white rounded-xl border p-4">
-        <div class="flex items-center justify-between mb-3">
-          <h2 class="font-semibold">Nächste Termine</h2>
-          <CalendarDaysIcon class="w-5 h-5 text-gray-400" />
-        </div>
-        <ul class="space-y-3">
-          <EventItem day="10" month="JAN" title="Teammeeting"        time="09:00 - 10:30" />
-          <EventItem day="12" month="JAN" title="Ausbildergespräch"  time="14:00 - 15:00" />
-          <EventItem day="15" month="JAN" title="Berufsschule"       time="08:00 - 15:30" />
-        </ul>
-      </div>
-
+      <!-- Letztes Feedback -->
       <!-- Letztes Feedback -->
       <div class="bg-white rounded-xl border p-4">
         <div class="flex items-center justify-between mb-3">
           <h2 class="font-semibold">Letztes Feedback</h2>
           <button class="text-gray-400 hover:text-gray-600">💬</button>
         </div>
-        <div class="flex items-start gap-3">
-          <img class="w-10 h-10 rounded-full ring-1 ring-gray-200" src="https://api.dicebear.com/7.x/thumbs/svg?seed=herr" alt="avatar" />
-          <div class="flex-1">
-            <div class="text-sm">
-              <span class="font-medium">Herr Schmidt</span>
-              <span class="text-gray-500"> vor 2 Tagen</span>
+
+        <!-- Container für mehrere Kommentare -->
+        <ul class="space-y-4">
+          <!-- Kommentar 1 -->
+          <li class="flex items-start gap-3">
+            <img
+              class="w-10 h-10 rounded-full ring-1 ring-gray-200"
+              src="https://api.dicebear.com/7.x/thumbs/svg?seed=herr"
+              alt="avatar"
+            />
+            <div class="flex-1">
+              <div class="text-sm">
+                <span class="font-medium">Herr Schmidt</span>
+                <span class="text-gray-500"> vor 2 Tagen</span>
+              </div>
+              <p class="text-sm text-gray-700 mt-1">
+                Sehr gute Arbeit bei der letzten Projektpräsentation. Besonders die strukturierte Herangehensweise war beeindruckend.
+              </p>
+              <div class="mt-2 flex items-center gap-1">
+                <Star v-for="i in 5" :key="i" :filled="i <= 4" />
+              </div>
             </div>
-            <p class="text-sm text-gray-700 mt-1">
-              Sehr gute Arbeit bei der letzten Projektpräsentation. Besonders die strukturierte Herangehensweise war beeindruckend.
-            </p>
-            <div class="mt-2 flex items-center gap-1">
-              <Star v-for="i in 5" :key="i" :filled="i<=4" />
+          </li>
+
+          <!-- Kommentar 2 -->
+          <li class="flex items-start gap-3">
+            <img
+              class="w-10 h-10 rounded-full ring-1 ring-gray-200"
+              src="https://api.dicebear.com/7.x/thumbs/svg?seed=herr"
+              alt="avatar"
+            />
+            <div class="flex-1">
+              <div class="text-sm">
+                <span class="font-medium">Herr Müller</span>
+                <span class="text-gray-500"> vor 4 Tagen</span>
+              </div>
+              <p class="text-sm text-gray-700 mt-1">
+                Sehr gute Arbeit bei der letzten Projektpräsentation. Besonders die strukturierte Herangehensweise war beeindruckend.
+              </p>
+              <div class="mt-2 flex items-center gap-1">
+                <Star v-for="i in 5" :key="i" :filled="i <= 4" />
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Lernfortschritt (separat darunter) -->
+    <section class="bg-white rounded-xl border p-6">
+      
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg text-neutral-900">Lernfortschritt</h2>
+        <span class="text-sm text-neutral-500">68% abgeschlossen</span>
+      </div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-neutral-700">Gesamtfortschritt</span>
+            <span class="text-sm text-neutral-500">68%</span>
+          </div>
+          <div class="w-full bg-neutral-200 rounded-full h-2">
+            <div class="bg-neutral-800 h-2 rounded-full" style="width: 68%"></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm text-neutral-600">Theorie</span>
+              <span class="text-sm text-neutral-500">85%</span>
+            </div>
+            <div class="w-full bg-neutral-200 rounded-full h-1.5">
+              <div class="bg-neutral-500 h-1.5 rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm text-neutral-600">Praxis</span>
+              <span class="text-sm text-neutral-500">72%</span>
+            </div>
+            <div class="w-full bg-neutral-200 rounded-full h-1.5">
+              <div class="bg-neutral-500 h-1.5 rounded-full" style="width: 72%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm text-neutral-600">Projekte</span>
+              <span class="text-sm text-neutral-500">45%</span>
+            </div>
+            <div class="w-full bg-neutral-200 rounded-full h-1.5">
+              <div class="bg-neutral-500 h-1.5 rounded-full" style="width: 45%"></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Lernfortschritt (separat darunter) -->
-    <section class="bg-white rounded-xl border p-6">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="font-semibold">Lernfortschritt</h2>
-        <div class="text-sm text-gray-500"><span class="font-medium">{{ overall }}%</span> abgeschlossen</div>
-      </div>
-
-      <Progress label="Gesamtfortschritt" :value="overall" class="mb-6" />
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Progress label="Theorie"  :value="85" />
-        <Progress label="Praxis"   :value="72" />
-        <Progress label="Projekte" :value="45" />
-      </div>
+    
     </section>
   </div>
 </template>

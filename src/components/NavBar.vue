@@ -22,7 +22,7 @@
         </div>
 
         <!-- Avatar + Name + Menü -->
-        <div class="relative" @mouseenter="showUser = true" @mouseleave="showUser = false">
+        <div class="relative" @mouseenter="showUser = true">
           <button class="flex items-center gap-2" @click="gotoProfile">
             <img
               class="w-8 h-8 rounded-full ring-1 ring-gray-200"
