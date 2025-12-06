@@ -33,7 +33,12 @@
 
             <div
               id="upload-area"
-              class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer"
+              class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center transition-colors cursor-pointer"
+              :class="isDragging ? 'border-blue-400 bg-blue-50' : 'hover:border-primary'"
+              @click="openFileDialog"
+              @dragover.prevent="onDragOver"
+              @dragleave.prevent="onDragLeave"
+              @drop.prevent="onDrop"
             >
               <div class="flex flex-col items-center space-y-4">
                 <div
@@ -52,7 +57,9 @@
                 </div>
 
                 <button
+                  type="button"
                   class="inline-flex items-center px-6 py-2.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primaryDark transition-colors"
+                  @click.stop="openFileDialog"
                 >
                   <PlusIcon class="w-4 h-4 mr-2" />
                   Dateien auswählen
@@ -60,19 +67,18 @@
               </div>
 
               <input
+                ref="fileInput"
                 type="file"
-                id="file-input"
                 class="hidden"
                 multiple
                 accept=".pdf,.doc,.docx,.jpg,.png,.jpeg"
+                @change="onFileChange"
               />
             </div>
 
-            <div id="upload-queue" class="mt-4 space-y-3 hidden">
-              <h4 class="text-sm font-medium text-gray-900">
-                Upload-Warteschlange
-              </h4>
-              <div class="space-y-2" id="queue-items"></div>
+            <!-- Optional: Upload-Status -->
+            <div v-if="uploading" class="mt-4 text-sm text-gray-700">
+              Upload läuft… {{ uploadProgress }}%
             </div>
           </div>
 
@@ -93,6 +99,7 @@
                     <select
                       id="document-filter"
                       class="px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent"
+                      v-model="selectedFilter"
                     >
                       <option value="all">Alle Typen</option>
                       <option value="contract">Verträge</option>

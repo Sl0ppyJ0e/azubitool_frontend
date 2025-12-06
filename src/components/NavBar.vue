@@ -32,7 +32,7 @@
           </button>
           <div v-if="showUser" class="absolute right-0 mt-2 w-44 bg-white border shadow-lg rounded-lg py-2 z-20">
             <button class="w-full text-left px-4 py-2 hover:bg-gray-50" @click="gotoProfile">Mein Profil</button>
-            <button class="w-full text-left px-4 py-2 hover:bg-gray-50 text-red-600" @click="doLogout">Logout</button>
+            <button class="w-full text-left px-4 py-2 hover:bg-gray-50 text-red-600" @click="doLogout" @mouseleave="showUser = false">Logout</button>
           </div>
         </div>
       </div>
